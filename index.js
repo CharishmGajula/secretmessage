@@ -32,11 +32,11 @@ app.get("/",(req,res)=>
     res.json("Welcome to secret message!, post message at /message end point");
 })
 
-app.get("/message",(req,res)=>
+app.get("/message",async (req,res)=>
 {
     //console.log(process.env.DATABASE_URI);
     try{
-        const data=Product.find({});
+        const data=await Product.find({});
         res.status(200).json({"status":"success","Product_Length":Product.length,"data":data});
     }
     catch(err){
